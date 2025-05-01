@@ -24,7 +24,7 @@ export const useOnboardingForm = () => {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submissionError, setSubmissionError] = useState('');
-  const [touched, setTouched] = useState<Partial<Record<keyof FormData, boolean>>>({});
+  const [_touched, setTouched] = useState<Partial<Record<keyof FormData, boolean>>>({});
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -64,7 +64,6 @@ export const useOnboardingForm = () => {
       formSchema.parse(data);
 
       if (data.corporationNumber) {
-        
         const response = await validateCorporationNumber(data.corporationNumber);
         if (!response.valid) {
           return { corporationNumber: response.message || 'Invalid corporation number' };

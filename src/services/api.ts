@@ -8,7 +8,7 @@ export interface CorporationNumberResponse {
 export const validateCorporationNumber = async (number: string): Promise<CorporationNumberResponse> => {
   // TODO: cache result to prevent additional reuests
   const response = await fetch(`https://fe-hometask-api.qa.vault.tryvault.com/corporation-number/${number}`);
-  const data = await response.json(); // Parse the response once here
+  const data = await response.json();
   return data;
 };
 
